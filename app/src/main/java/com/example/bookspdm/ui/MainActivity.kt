@@ -2,8 +2,11 @@ package com.example.bookspdm.ui
 
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import com.example.bookspdm.R
 import com.example.bookspdm.databinding.ActivityMainBinding
 import com.example.bookspdm.model.Book
 
@@ -30,10 +33,28 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(amb.root)
 
-        fillBookList() //lista preenchida com books genéricos
+        amb.toolbarIn.toolbar.let{
+            it.subtitle = "Book list"
+            setSupportActionBar(it)
+        }
+        fillBookList()
+        amb.booksLv.adapter = bookAdapter
+    }
 
-        amb.booksLv.adapter = bookAdapter //associa bookAdapter com a ListView
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
 
+    // símbolo de igual = return, when = case
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId){
+        R.id.addBookMi ->{
+            //Abrir tela para adicionar novo livro
+            true
+        }
+        else -> {
+            false
+        }
     }
 
     private fun fillBookList(){

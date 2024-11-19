@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">BooksPdm</string>
+    <string name="add_book">Add book</string>
+    <string name="title">Title</string>
+    <string name="editora">Editora</string>
+    <string name="primeiro_autor">Primeiro autor</string>
+    <string name="isbn">ISBN</string>
+    <string name="edi_o">Edição</string>
+    <string name="number_of_pages">Number of pages</string>
+    <string name="save">Save</string>
+    <string name="publisher" />
+    <string name="edition" />
+    <string name="first_author" />
 </resources>
