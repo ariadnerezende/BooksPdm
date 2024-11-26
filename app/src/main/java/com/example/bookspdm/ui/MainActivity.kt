@@ -24,14 +24,8 @@ class MainActivity : AppCompatActivity() {
     private val bookList: MutableList<Book> = mutableListOf()
 
     //Adapter = mutable list não aceita tipo Book.
-    private val bookAdapter: ArrayAdapter<String> by lazy {
-        val bookTitleList: MutableList<String> = mutableListOf()
-        bookList.forEach { book -> bookTitleList.add(book.title) } //se book.ToString() mostraria todas as infos do books
-        ArrayAdapter(
-            this,
-            android.R.layout.simple_list_item_1,
-            bookTitleList
-        )
+    private val bookAdapter: BookAdapter by lazy {
+        BookAdapter(this, bookList)
     }
 
     private lateinit var barl: ActivityResultLauncher<Intent>
@@ -50,7 +44,6 @@ class MainActivity : AppCompatActivity() {
                 }
             book?.let{
                 bookList.add(it) //adicionando um novo livro no final da lista que foi feito lá na onOptionsItemSelected
-                bookAdapter.add(it.title)
                 bookAdapter.notifyDataSetChanged()
             }
             }
