@@ -46,8 +46,18 @@ class MainActivity : AppCompatActivity() {
                 else{
                     result.data?.getParcelableExtra(Constant.BOOK, Book::class.java)
                 }
-            book?.let{
-                bookList.add(it) //adicionando um novo livro no final da lista que foi feito lá na onOptionsItemSelected
+            //verificando se o livro existe
+            book?.let{ receiveBook ->
+                val position = bookList.indexOfFirst {  it.isbn == receiveBook.isbn}
+                if(position == -1){
+                    //adicionando
+                    bookList.add(receiveBook)
+                }
+                else{
+                    //substituindo
+                    bookList[position] = receiveBook
+                }
+                //notifico o adapter sobre o que fiz
                 bookAdapter.notifyDataSetChanged()
             }
             }
