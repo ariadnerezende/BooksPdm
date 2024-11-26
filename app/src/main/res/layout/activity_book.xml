@@ -19,75 +19,76 @@
         android:id="@+id/titleEt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/title"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolBarIn"/>
+        app:layout_constraintTop_toBottomOf="@id/toolBarIn" />
 
     <EditText
         android:id="@+id/isbnEt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:hint="@string/isbn"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleEt" />
+        app:layout_constraintTop_toBottomOf="@id/titleEt" />
 
     <EditText
         android:id="@+id/firstAuthorEt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/first_author"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/isbnEt" />
+        app:layout_constraintTop_toBottomOf="@id/isbnEt" />
 
     <EditText
         android:id="@+id/publisherEt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/publisher"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstAuthorEt" />
+        app:layout_constraintTop_toBottomOf="@id/firstAuthorEt" />
 
     <EditText
         android:id="@+id/editionEt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:inputType="number"
         android:hint="@string/edition"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/publisherEt" />
+        app:layout_constraintTop_toBottomOf="@id/publisherEt" />
 
     <EditText
         android:id="@+id/pagesEt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:inputType="number"
         android:hint="@string/number_of_pages"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editionEt" />
+        app:layout_constraintTop_toBottomOf="@id/editionEt" />
 
     <Button
         android:id="@+id/saveBt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/save"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pagesEt" />
+        app:layout_constraintTop_toBottomOf="@id/pagesEt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
