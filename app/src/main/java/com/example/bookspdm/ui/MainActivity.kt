@@ -4,8 +4,11 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.AdapterView.AdapterContextMenuInfo
 import android.widget.ArrayAdapter
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -14,6 +17,7 @@ import com.example.bookspdm.R
 import com.example.bookspdm.databinding.ActivityMainBinding
 import com.example.bookspdm.model.Book
 import com.example.bookspdm.model.Constant
+import com.example.bookspdm.model.Constant.BOOK
 
 class MainActivity : AppCompatActivity() {
     private val amb: ActivityMainBinding by lazy {
@@ -54,8 +58,11 @@ class MainActivity : AppCompatActivity() {
             it.subtitle = "Book list"
             setSupportActionBar(it)
         }
-        //fillBookList()
+        fillBookList()
         amb.booksLv.adapter = bookAdapter
+
+        //vai utilizar menu de contexto - edit e remove
+        registerForContextMenu(amb.booksLv)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -74,6 +81,42 @@ class MainActivity : AppCompatActivity() {
             false
         }
     }
+
+    override fun onCreateContextMenu(
+        menu: ContextMenu?,
+        v: View?,
+        menuInfo: ContextMenu.ContextMenuInfo?
+    ) = menuInflater.inflate(R.menu.context_menu_main, menu)
+
+
+    //equivalente a onOptionsItemSelected
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+
+        //Pegando a posição do livro que quero editar/remover
+        val position = (item.menuInfo as AdapterContextMenuInfo).position
+
+        return when(item.itemId){
+            R.id.editBookMi -> {
+                //Chamar tela de edição de livro
+                //Mandando o livro junto com a Intent
+                Intent(this, BookActivity::class.java).apply {
+                    putExtra(BOOK, bookList[position])
+                    barl.launch(this)
+                }
+                true
+            }
+            R.id.removeBookMi ->{
+                //Remover livro da lista
+                bookList.removeAt(position)
+                bookAdapter.notifyDataSetChanged()
+                true
+            }
+            else ->{
+                false
+            }
+        }
+    }
+
 
     private fun fillBookList(){
         for(index in 1..50){
